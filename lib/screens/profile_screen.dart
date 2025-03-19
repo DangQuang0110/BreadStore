@@ -9,37 +9,44 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orange, // Đặt nền cam
       appBar: AppBar(
         title: const Text('Hồ Sơ'),
+        backgroundColor: Colors.deepOrange, // Đồng bộ màu với nền
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment:
-              MainAxisAlignment.center, // Căn giữa theo chiều dọc
-          crossAxisAlignment:
-              CrossAxisAlignment.center, // Căn giữa theo chiều ngang
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CircleAvatar(
               radius: 50,
+              backgroundColor: Colors.white, // Làm nổi bật avatar
               child: Text(
                 user.name[0].toUpperCase(),
-                style: const TextStyle(fontSize: 40),
+                style: const TextStyle(fontSize: 40, color: Colors.black),
               ),
             ),
             const SizedBox(height: 20),
             Text(
               'Tên: ${user.name}',
-              style: const TextStyle(fontSize: 20),
-              textAlign: TextAlign.center, // Đảm bảo text căn giữa
+              style: const TextStyle(
+                  fontSize: 20, color: Colors.white), // Màu trắng cho dễ đọc
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             Text(
               'Email: ${user.email}',
-              style: const TextStyle(fontSize: 20),
-              textAlign: TextAlign.center, // Đảm bảo text căn giữa
+              style: const TextStyle(
+                  fontSize: 20, color: Colors.white), // Màu trắng
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white, // Nút trắng nổi bật trên nền cam
+                foregroundColor: Colors.orange, // Màu chữ cam
+              ),
               onPressed: () {
                 Navigator.pushAndRemoveUntil(
                   context,

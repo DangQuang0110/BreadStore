@@ -54,7 +54,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Đăng Ký - Foodapp'),
+        title: const Text('Đăng Ký'),
         backgroundColor: AppConstants.primaryColor,
       ),
       body: Padding(

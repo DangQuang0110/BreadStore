@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Đăng Nhập - Foodapp'),
+        title: const Text('Đăng Nhập'),
         backgroundColor: AppConstants.secondaryColor,
       ),
       body: Padding(
@@ -69,11 +69,11 @@ class _LoginScreenState extends State<LoginScreen> {
               const Icon(
                 Icons.fastfood,
                 size: 100,
-                color: Colors.green,
+                color: Color(0xffde3902),
               ),
               const SizedBox(height: 20),
               const Text(
-                'Đăng Nhập Để Đặt Món',
+                'Đăng Nhập',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),

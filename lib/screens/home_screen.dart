@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 import '../services/api_service.dart';
 import '../models/food_model.dart';
 import '../models/user_model.dart';
-import '../constants.dart';
 import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -77,13 +76,11 @@ class _HomeScreenState extends State<HomeScreen> {
   void _searchFoods(String query) {
     setState(() {
       if (query.isEmpty) {
-        if (_selectedCategory == 'All') {
-          _filteredFoods = _foods;
-        } else {
-          _filteredFoods = _foods
-              .where((food) => food.category == _selectedCategory)
-              .toList();
-        }
+        _filteredFoods = _foods
+            .where((food) =>
+                _selectedCategory == 'All' ||
+                food.category == _selectedCategory)
+            .toList();
       } else {
         _filteredFoods = _foods
             .where((food) =>
@@ -122,16 +119,18 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Foodapp'),
-        backgroundColor: AppConstants.primaryColor,
+        backgroundColor: Colors.orange,
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: CircleAvatar(
               child: Text(widget.user.name[0].toUpperCase()),
+              backgroundColor: Colors.white,
             ),
           ),
         ],
       ),
+      backgroundColor: Colors.orange[50],
       body: Column(
         children: [
           Padding(
@@ -140,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
               controller: _searchController,
               decoration: InputDecoration(
                 hintText: 'Tìm kiếm món ăn...',
-                prefixIcon: const Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search, color: Colors.orange),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
@@ -171,6 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (context, index) {
                       final food = _filteredFoods[index];
                       return Card(
+                        color: Colors.orange[100],
                         elevation: 2,
                         margin: const EdgeInsets.only(bottom: 16.0),
                         child: ListTile(
@@ -189,9 +189,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
                           subtitle: Text(
-                              '${_numberFormat.format(food.price.toInt())} đ'), // Làm tròn xuống và định dạng
+                              '${_numberFormat.format(food.price.toInt())} đ'),
                           trailing: IconButton(
-                            icon: const Icon(Icons.add, color: Colors.teal),
+                            icon:
+                                const Icon(Icons.add, color: Colors.deepOrange),
                             onPressed: () => _addToCart(food),
                           ),
                         ),
@@ -210,6 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: ChoiceChip(
         label: Text(category),
         selected: _selectedCategory == category,
+        selectedColor: Colors.deepOrange,
         onSelected: (selected) {
           if (selected) {
             _filterFoods(category);

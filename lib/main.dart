@@ -14,12 +14,11 @@ class FoodApp extends StatelessWidget {
     return MaterialApp(
       title: 'Foodapp',
       theme: ThemeData(
-        primarySwatch: Colors.teal,
+        primaryColor: const Color(
+            0xff3235ff), // Sử dụng primaryColor thay vì primarySwatch
         textTheme: GoogleFonts.notoSansTextTheme(
-          // Sử dụng font Noto Sans
           Theme.of(context).textTheme,
         ),
-        // Đảm bảo font được áp dụng cho tất cả các text
         fontFamily: GoogleFonts.notoSans().fontFamily,
       ),
       home: const LoginScreen(),
